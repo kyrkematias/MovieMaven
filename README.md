@@ -21,7 +21,7 @@ This is a Movie App built using React that connects to the moviedb API. It allow
    REACT_APP_API_KEY=YOUR_API_KEY
    ```
 
-4. Run `npm start` to start the development server
+4. Run `npm run dev` to start the development server
 
 ## Dependencies
 

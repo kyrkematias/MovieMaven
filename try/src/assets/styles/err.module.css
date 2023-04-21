@@ -1,0 +1,15 @@
+.err{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    width: 100%;
+    height: 100vh;
+    gap: 3rem;
+    font-size: 25px;
+}
+
+.errimg{
+    width: 300px;
+}

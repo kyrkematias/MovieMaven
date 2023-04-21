@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 3rem;
+    color: white;
+}
+
+.poster{
+    width: 300px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.details{
+    width: 300px;
+}

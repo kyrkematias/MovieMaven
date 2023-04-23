@@ -4,25 +4,26 @@ import NavBar from "../components/NavBar";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import styles from "../assets/styles/moviecard.module.css";
 import Loader from "../components/Loader";
+import Footer from "../components/Footer";
 
 const MovieCardTemplate = ({ movie }) => {
-    return (
-      <Card
-        style={{ width: "12rem", height: "22rem", padding: "0 0 5rem 0" }}
-        className={styles.card}
-      >
-        <Link to={"/movies/" + movie.id} className="link">
-          <Card.Img
-            variant="top"
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          />
-          <Card.Body>
-            <h3 className={styles.title}>{movie.title}</h3>
-          </Card.Body>
-        </Link>
-      </Card>
-    );
-  };
+  return (
+    <Card
+      style={{ width: "12rem", height: "22rem", padding: "0 0 5rem 0" }}
+      className={styles.card}
+    >
+      <Link to={"/movies/" + movie.id} className="link">
+        <Card.Img
+          variant="top"
+          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+        />
+        <Card.Body>
+          <h3 className={styles.title}>{movie.title}</h3>
+        </Card.Body>
+      </Link>
+    </Card>
+  );
+};
 
 const SearchDetails = () => {
   const { searchText } = useParams();
@@ -42,15 +43,19 @@ const SearchDetails = () => {
     fetchMovies();
   }, [searchText]);
 
-  if(isLoading){
-    return <Loader />
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (
     <div>
       <NavBar />
       <div>
-        <h1 className={styles.titleSearch}>Resultados de búsqueda para: {searchText}</h1>
+        <h1 className={styles.titleSearch}>
+          {movies && movies.length > 0
+            ? `Resultados para: ${searchText}`
+            : `No se encontraron resultados para: ${searchText}`}
+        </h1>
 
         <Container gap={2}>
           <Row
@@ -66,6 +71,7 @@ const SearchDetails = () => {
           </Row>
         </Container>
       </div>
+      <Footer />
     </div>
   );
 };

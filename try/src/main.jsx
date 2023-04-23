@@ -9,6 +9,7 @@ import {
 import NotFound from './pages/NotFound';
 import MovieDetails from './pages/MovieDetails';
 import SearchDetails from './pages/SearchDetails';
+import Genres from './pages/Genres';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
   {
     path:"/search/:searchText",
     element: <SearchDetails />,
+    errorElement: <NotFound />
+  },
+  {
+    path:"/generos/:genreId",
+    element: <Genres />,
     errorElement: <NotFound />
   }
 ]);

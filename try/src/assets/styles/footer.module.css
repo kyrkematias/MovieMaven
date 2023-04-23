@@ -1,0 +1,35 @@
+.footerContainer{
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-top: 1px solid #1e1d1d;
+}
+
+.socials{
+    text-decoration: none;
+    color: white;
+    transition: .5s;
+    font-size: 18px;
+}
+
+.socials:hover{
+    color: gray;
+}
+
+.socialContainer{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.footerDesc{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    text-align: center;
+    margin-top: 1rem;
+}

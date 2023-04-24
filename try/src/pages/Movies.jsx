@@ -1,13 +1,12 @@
 import React from "react";
-import NavBar from "../components/NavBar";
-import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
-import styles from "../assets/styles/card.module.css";
+import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import styles from "../assets/styles/card.module.css";
 
-const Genres = () => {
-  const { genreId } = useParams();
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -21,8 +20,7 @@ const Genres = () => {
       }
 
       const moviesResponse = await fetch(
-        "https://api.themoviedb.org/3/discover/movie?api_key=349f8b7252f326c17f9c35144a8db7ab&with_genres=" +
-          genreId
+        "https://api.themoviedb.org/3/movie/now_playing?api_key=349f8b7252f326c17f9c35144a8db7ab&language=en-US&page=1"
       );
       const moviesData = await moviesResponse.json();
       setMovies(moviesData.results);
@@ -30,7 +28,7 @@ const Genres = () => {
     };
 
     fetchMovies();
-  }, [genreId]);
+  }, []);
 
   if (isLoading) {
     return <Loader />;
@@ -61,4 +59,4 @@ const Genres = () => {
   );
 };
 
-export default Genres;
+export default Movies;

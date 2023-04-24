@@ -1,13 +1,12 @@
 import React from "react";
-import NavBar from "../components/NavBar";
-import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
-import styles from "../assets/styles/card.module.css";
+import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import styles from "../assets/styles/card.module.css";
 
-const Genres = () => {
-  const { genreId } = useParams();
+const Series = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,17 +19,23 @@ const Genres = () => {
         return;
       }
 
-      const moviesResponse = await fetch(
-        "https://api.themoviedb.org/3/discover/movie?api_key=349f8b7252f326c17f9c35144a8db7ab&with_genres=" +
-          genreId
-      );
-      const moviesData = await moviesResponse.json();
-      setMovies(moviesData.results);
-      setIsLoading(false);
-    };
+      try {
+        const moviesResponse = await fetch(
+          "https://api.themoviedb.org/3/discover/tv?api_key=349f8b7252f326c17f9c35144a8db7ab&sort_by=popularity.desc&with_genres=18&first_air_date.lte=2000-01-01&vote_average.gte=8"
+        );
+        if (!moviesResponse.ok) {
+          throw new Error("Failed to fetch movies");
+        }
+        const moviesData = await moviesResponse.json();
+        setMovies(moviesData.results);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+        setIsLoading(false);
+      }
 
-    fetchMovies();
-  }, [genreId]);
+    fetchMovies();}
+  }, []);
 
   if (isLoading) {
     return <Loader />;
@@ -61,4 +66,4 @@ const Genres = () => {
   );
 };
 
-export default Genres;
+export default Series;

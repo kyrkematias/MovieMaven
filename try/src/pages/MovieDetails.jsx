@@ -6,6 +6,10 @@ import Button from "react-bootstrap/Button";
 import styles from "../assets/styles/movieDetails.module.css";
 import Loader from "../components/Loader";
 import Footer from "../components/Footer";
+import MovieTrailerButton from "../components/MovieTrailerButton";
+import axios from "axios";
+
+
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -23,8 +27,6 @@ const MovieDetails = () => {
     return <Loader />;
   }
 
-  
-
   if (!movie) {
     return null;
   }
@@ -35,7 +37,7 @@ const MovieDetails = () => {
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt={movie.title}
-          title={`Poster de la pelicula de  `+ movie.title}
+          title={`Poster de la pelicula de  ` + movie.title}
           className={styles.poster}
         />
         <div className={styles.details}>
@@ -51,7 +53,7 @@ const MovieDetails = () => {
           <p>
             <strong>Description:</strong> {movie.overview}
           </p>
-          <Button variant="dark">Ver trailer</Button>
+          <MovieTrailerButton />
         </div>
       </div>
       <Footer />

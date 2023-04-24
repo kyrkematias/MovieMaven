@@ -10,7 +10,7 @@ function PopularMovies() {
     <Container style={{ padding: "2rem 0" }}>
       <div className={styles.sectionHeader}>
         <SectionTitle text="Más populares" />
-        <a href="#" className={styles.sectionLink}>
+        <a href="/movies/" className={styles.sectionLink}>
           Ver más
         </a>
       </div>
